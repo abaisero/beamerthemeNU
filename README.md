@@ -48,8 +48,8 @@ like the `author` and `institute` commands, e.g.
 
 ## Logos
 
-`NU-brand` contains NU logos taken from the
-[https://brand.northeastern.edu/guide/downloads/files/](brand page).
+`NU-brand/` contains NU logos taken from the
+[brand page](https://brand.northeastern.edu/guide/downloads/files/]).
 
 ### Title Page Logos
 
