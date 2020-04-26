@@ -1,0 +1,385 @@
+% Theme for Northeastern Universiry
+% Modified by Andrea Baisero (baisero.a@northeastern.edu)
+% Based on:
+% Theme for The University of Bergen
+% Implemented by Martin Helsø (martibhe@math.uio.no)
+% Version 08-01-2020
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\RequirePackage{thmtools}
+\hypersetup{colorlinks,
+            urlcolor  = nublue,
+            linkcolor =,
+            citecolor =}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Standard headers:
+\urlstyle{same}
+
+%% Vertical text alignment:
+\DeclareOptionBeamer{c}{\beamer@centeredtrue}
+\DeclareOptionBeamer{t}{\beamer@centeredfalse}
+
+%% Theorem numbers:
+\DeclareOptionBeamer{unnumbered}{\def\@NU@theorems{}}
+\DeclareOptionBeamer{numbered}  {\def\@NU@theorems{numbered}}
+\DeclareOptionBeamer{AMS}       {\def\@NU@theorems{ams style}}
+
+%% Font:
+\providebool{neohellenic}
+\providebool{latinmodern}
+\DeclareOptionBeamer{SansSerif}
+{
+    \def\NUfont {default}
+    \setbool{neohellenic}{true}
+    \setbool{latinmodern}{false}
+}
+\DeclareOptionBeamer{MathSerif}
+{
+    \def\NUfont {professionalfonts}
+    \setbool{neohellenic}{false}
+    \setbool{latinmodern}{false}
+}
+\DeclareOptionBeamer{Serif}
+{
+    \def\NUfont {serif}
+    \setbool{neohellenic}{false}
+    \setbool{latinmodern}{true}
+}
+
+\ExecuteOptionsBeamer{c}
+\ExecuteOptionsBeamer{unnumbered}
+\ExecuteOptionsBeamer{MathSerif}
+\ProcessOptionsBeamer
+
+\AtBeginDocument{\@NU@titleframe}
+
+% TODO setup final frame
+% \AtEndDocument{\@NU@finalframe}
+
+
+% Use a neohellenic font from the Greek Font Society
+% for small, greek letters. It is a sans serif that
+% matches Helvetica better in style and weight than
+% the standard Computer Modern.
+\ifbool{neohellenic}{\RequirePackage[default]{gfsneohellenic}}{}
+
+\ifbool{latinmodern} {
+  \renewcommand\rmdefault{lmr} % Latin Modern Roman
+}{
+  \renewcommand\rmdefault{pbk}  % Bookman
+}
+
+\renewcommand\sfdefault{phv} % Helvetica
+\renewcommand\ttdefault{pcr} % Courier
+
+
+%% Allow more stretching
+\setlength{\emergencystretch}{3em}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Official colours: https://brand.northeastern.edu/guide/design-elements/colors/
+% \definecolor{nured}  {RGB}{200,0,0}
+\definecolor{nured}  {RGB}{212,27,44}
+% \definecolor{nugreen}{RGB}{100,200,100}
+% \definecolor{nugreen}{RGB}{0,207,181}
+% \definecolor{nugreen}{RGB}{186,219,0}
+% \definecolor{nublue} {RGB}{100,100,200}
+\definecolor{nublue} {RGB}{0,110,181}
+\definecolor{nugray} {RGB}{230,230,230}
+% \definecolor{nugray} {RGB}{229,212,171}
+\definecolor{nuyellow}{RGB}{255,191,61}
+\definecolor{nuorange}{RGB}{255,133,79}
+
+\definecolor{nugold} {RGB}{218,165,32}
+% \definecolor{nugold} {RGB}{164,128,74}
+\definecolor{nusilver}{RGB}{212,213,212}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% default logos
+\newcommand\@NU@titlepagelogo{{"NU-brand/Notched-N-Motto-Wordmark-Lockup/_PNG/Notched N Motto Wordmark Lockup_Nmotto+Northeastern_BRB"}.png}
+\newcommand\@NU@framelogo{{"NU-brand/N-Wordmark-Lockup/_PNG/N Wordmark Lockup_N+Northeastern_RB"}.png}
+
+% title page logo commands
+\newcommand\@NU@titlepagelogos{\includegraphics[height=3em]{\@NU@titlepagelogo}}
+\newcommand\addtitlepagelogo[1]{
+  \makeatletter
+  \g@addto@macro\@NU@titlepagelogos{\quad\includegraphics[height=3em]{#1}}
+  \makeatother
+}
+
+% frame logo commands
+\newif\if@NU@showlogo % create a new conditional
+\@NU@showlogotrue % set it to true
+
+\logo{\if@NU@showlogo\includegraphics[height=12ex]{\@NU@framelogo}\fi}
+
+\newcommand\hidelogo{\@NU@showlogofalse}
+\newcommand\showlogo{\@NU@showlogotrue}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+%
+% The \venue command
+%
+%
+\def\venue{\@dblarg\beamer@venue}
+\long\def\beamer@venue[#1]#2{%
+  \def\insertvenue{\def\inst{\beamer@insttitle}\def\and{\beamer@andtitle}#2}%
+  \def\beamer@shortvenue{#1}%
+}
+
+\venue{}
+
+% Aux commands for \author
+\newcommand\insertshortvenue[1][]{%
+  {%
+    \def\inst{\beamer@instother}\def\and{\beamer@andother}\let\thanks=\@gobble%
+    \beamer@setupshort{#1}%
+    \beamer@insertshort{\beamer@shortvenue}%
+  }}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mode<presentation>
+
+\useinnertheme{circles}
+\usefonttheme{\NUfont}
+
+\setbeamertemplate{theorems}[\@NU@theorems]
+\setbeamertemplate{qed symbol}{\(\blacksquare\)}
+\setbeamertemplate{navigation symbols}{}
+% \setbeamertemplate{caption label separator}{: }
+% \setbeamersize{text margin left  = 3.845mm,
+%                text margin right = 3.845mm}
+
+
+%% Standard colours:
+\setbeamercolor{background canvas}{bg = white}
+\setbeamercolor{structure}{fg = nured}
+
+\setbeamercolor{block title}{fg = white,
+                             bg = nured}
+\setbeamercolor{block body} {bg = nusilver!50}
+
+\setbeamercolor{block title example}{fg = white,
+                                     bg = nublue}
+\setbeamercolor{block body example} {bg = nusilver!50}
+\setbeamercolor{example text}       {fg = nublue}
+
+\setbeamercolor{block title alerted}{fg = white,
+                                     bg = nugold!90}
+\setbeamercolor{block body alerted} {bg = nusilver!50}
+\setbeamercolor{alerted text}       {fg = nugold!90}
+
+\setbeamercolor{footnote mark}{fg = nured}
+\setbeamercolor{section in head/foot}{fg = white,
+                                      bg = nured}
+\setbeamercolor{section in toc}{fg = black}
+\setbeamercolor{bibliography entry location}{fg = nured}
+
+
+%% Custom colours:
+\setbeamercolor{author in final frame}  {fg = white}
+\setbeamercolor{title in final frame}   {fg = white}
+\setbeamercolor{subtitle in final frame}{fg = white}
+
+
+%% Standard fonts:
+\setbeamerfont{author}    {size   = \normalsize,
+                           series = \normalfont\bfseries}
+\setbeamerfont{institute} {size   = \normalsize,
+                           series = \normalfont\bfseries}
+\setbeamerfont{venue}     {size   = \large,
+                           series = \normalfont\rmfamily}
+\setbeamerfont{title}     {size   = \Large,
+                           series = \bfseries}
+\setbeamerfont{subtitle}  {size   = \Large,
+                           series = \normalfont\rmfamily}
+\setbeamerfont{frametitle}{size   = \Large,
+                           series = \bfseries}
+
+\setbeamerfont{author in head/foot}{series = \bfseries}
+\setbeamerfont{title in head/foot} {series = \bfseries}
+\setbeamerfont{date in head/foot}  {series = \bfseries}
+\setbeamerfont{section in toc}     {series = \bfseries}
+
+
+%% Custom fonts:
+\setbeamerfont{author in final frame}  {size   = \LARGE,
+                                        series = \bfseries}
+\setbeamerfont{title in final frame}   {size   = \LARGE,
+                                        series = \bfseries}
+\setbeamerfont{subtitle in final frame}{size   = \Large,
+                                        series = \normalfont\rmfamily}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\setbeamertemplate{title page}{
+
+  \begin{center}
+    %
+    \usebeamerfont{title}\inserttitle
+    %
+    \linebreak\linebreak
+    %
+    \usebeamerfont{subtitle}\insertsubtitle
+    %
+    \linebreak\linebreak
+    %
+    \usebeamerfont{venue}\insertvenue
+    %
+  \end{center}
+
+  \begin{beamercolorbox}[wd=\paperwidth, sep=1em]{section in head/foot}
+    %
+    \centering
+    %
+    \usebeamerfont{author}\insertauthor
+    %
+    \linebreak
+    %
+    \usebeamerfont{institute}\insertinstitute
+    %
+  \end{beamercolorbox}
+
+  \begin{center}
+    %
+    \@NU@titlepagelogos
+    %
+  \end{center}
+
+}
+
+
+\newcommand\@NU@titleframe{{
+
+  \begin{frame}[b,plain,noframenumbering]
+    %
+    \titlepage
+    %
+  \end{frame}
+
+}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\setbeamertemplate{footline}{
+
+  \begin{beamercolorbox}[wd = \paperwidth,
+                         dp = 1ex]
+                        {section in head/foot}
+
+    %
+    \hfil
+    %
+    \usebeamerfont{author in head/foot}
+    %
+    \insertshortauthor
+    %
+    \hfil---\hfil
+    %
+    \usebeamerfont{title in head/foot}
+    %
+    ``\insertshorttitle''
+    %
+    \hfil---\hfil
+    %
+    \insertshortvenue
+    %
+    %\hfil---\hfil
+    %%
+    %\insertframenumber\ / \inserttotalframenumber
+    %
+    \hfil
+    %
+  \end{beamercolorbox}
+
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\setbeamertemplate{blocks}[rounded]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\mode<all>
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Define additional theorem-like environments:
+\declaretheorem[style   = plain,
+                sibling = theorem,
+                name    = Conjecture]
+                {conjecture}
+\declaretheorem[style   = plain,
+                sibling = theorem,
+                name    = Facts]
+                {facts}
+\declaretheorem[style   = plain,
+                sibling = theorem,
+                name    = Hypothesis]
+                {hypothesis}
+\declaretheorem[style   = plain,
+                sibling = theorem,
+                name    = Observation]
+                {observation}
+\declaretheorem[style   = plain,
+                sibling = theorem,
+                name    = Proposition]
+                {proposition}
+\declaretheorem[style = definition,
+                name  = Assumption]
+                {assumption}
+\declaretheorem[style = definition,
+                name  = Axiom]
+                {axiom}
+\declaretheorem[style = definition,
+                name  = Property]
+                {property}
+\declaretheorem[style    = definition,
+                numbered = no,
+                name     = Calculation]
+                {calculation}
+\declaretheorem[style    = definition,
+                numbered = no,
+                name     = Computation]
+                {computation}
+\declaretheorem[style   = definition,
+                sibling = theorem,
+                name    = Notation]
+                {notation}
+\declaretheorem[style = remark,
+                name  = Remark]
+                {remark}
+\declaretheorem[style   = remark,
+                sibling = remark,
+                name    = Remarks]
+                {remarks}
+
+
+\endinput

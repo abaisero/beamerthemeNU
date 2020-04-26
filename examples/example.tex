@@ -1,0 +1,383 @@
+\documentclass{beamer}
+
+\usepackage{minted}
+
+\usetheme{NU}
+
+\title{An Example Using the NU Beamer Theme}
+\subtitle{Flashy Subtitle}
+
+\author[A. Baisero]{Andrea Baisero\\\texttt{baisero.a@northeastern.edu}}
+\venue[Venue 2020]{Venue 2020, Online}
+\institute{Northeastern University, Boston, USA}
+
+\addtitlepagelogo{logo.png}
+\addtitlepagelogo{another_logo.png}
+
+\begin{document}
+
+\section{Overview}
+
+% Use
+%
+%     \begin{frame}[allowframebreaks]
+%
+% if the TOC does not fit one frame.
+\begin{frame}
+  %
+  \frametitle{Ordinary table of contents}
+
+  \tableofcontents
+
+\end{frame}
+
+\begin{frame}
+  %
+  \frametitle{Table of contents that highlights current section}
+
+  \tableofcontents[currentsection]
+
+\end{frame}
+
+\section{Features}
+
+\begin{frame}
+  %
+  \frametitle{Table of contents that highlights current section}
+
+  \tableofcontents[currentsection]
+
+\end{frame}
+
+\hidelogo
+
+\begin{frame}
+  %
+  \frametitle{Package Options}
+
+  Options can be used to change some theme properties, e.g.,
+  %
+  \mint{latex}|\usetheme[t,SansSerif,AMS]{NU}|
+
+  \begin{block}{Vertical Alignment}
+    %
+    \begin{description}
+      %
+      \item[c] text is aligned at the center of the frame. (default)
+      %
+      \item[t] text is aligned at the top of the frame.
+      %
+    \end{description}
+    %
+  \end{block}
+
+  \begin{block}{Fonts}
+    %
+    \begin{description}
+      %
+      \item[MathSerif]  Only math is formatted in serif. (default)
+      %
+      \item[SansSerif]  Nothing is formatted in serif.
+      %
+      \item[Serif]  All text is formatted in serif.
+      %
+    \end{description}
+    %
+  \end{block}
+
+  \begin{block}{Enumeration Style of Theorems}
+    %
+    \begin{description}
+      %
+      \item[unnumbered]  Theorems are not numbered. (default)
+      %
+      \item[numbered]  Theorems are numbered.
+      %
+      \item[AMS]  AMS style.
+      %
+    \end{description}
+    %
+  \end{block}
+
+\end{frame}
+
+\showlogo
+
+\begin{frame}
+  %
+  \frametitle{Highlighting \& Blocks}
+
+  Text can be highlighted:
+  %
+  \begin{itemize}
+    %
+    \item The command \structure{structure}, which gives text the NU color.
+    %
+    \item The command \alert{alert}, which gives text extra umph.
+    %
+  \end{itemize}
+
+  \begin{block}{Block}
+    %
+    This is a standard block.
+    %
+  \end{block}
+
+  \begin{example}{Example}
+    %
+    This is an ``standard''  block.
+    %
+  \end{example}
+
+  \begin{alertblock}{Alertblock}
+    %
+    This is an ``alert''  block.
+    %
+  \end{alertblock}
+
+\end{frame}
+
+\hidelogo
+
+\begin{frame}
+  %
+  \frametitle{Lists}
+
+  \begin{itemize}
+    %
+    \item Bullet lists are marked with a red dot.
+    %
+  \end{itemize}
+
+  \begin{enumerate}
+    %
+    \item Numbered lists are marked with a white number in a red circle.
+    %
+  \end{enumerate}
+
+  \begin{description}
+    %
+    \item[Description] highlights important words with red text.
+    %
+  \end{description}
+
+  \begin{example}
+
+    \begin{itemize}
+      %
+      \item Lists change colour in block environments.
+      %
+    \end{itemize}
+
+    \begin{enumerate}
+      %
+      \item As seen in this example block.
+      %
+    \end{enumerate}
+
+    \begin{description}
+      %
+      \item[Description] and here
+      %
+    \end{description}
+
+  \end{example}
+
+  \begin{alertblock}{Another Example}
+
+    \begin{itemize}
+      %
+      \item Lists change colour in block environments.
+      %
+    \end{itemize}
+
+    \begin{enumerate}
+      %
+      \item As seen in this alert block.
+      %
+    \end{enumerate}
+
+    \begin{description}
+      %
+      \item[Description] and here
+      %
+    \end{description}
+
+  \end{alertblock}
+
+\end{frame}
+
+\showlogo
+
+\begin{frame}
+  %
+  \frametitle{Venue Command}
+
+  This package introduces the \structure{venue} command, with which you can
+  describe the venue where you are giving the talk, e.g. conference name,
+  location, etc.\newline
+
+  The command is used like \structure{author}, \structure{institute}, etc.,
+  %
+  \mint{latex}|\venue [Venue 2020]{Venue 2020, Online}|
+
+\end{frame}
+
+\begin{frame}[fragile]
+  %
+  \frametitle{Front Page}
+
+  \begin{block}{Front Page Logos}
+
+    Logos can be added to the front page using
+    %
+    \begin{minted}{latex}
+\addfrontpagelogo{logo.png}
+\addfrontpagelogo{other_logo.png}
+    \end{minted}
+
+    Calling the command multiple times will add multiple logos.
+    %
+  \end{block}
+
+  \begin{block}{Hide Frame Logo}
+
+    If necessary, it is possible to free up more space by omitting the logo on
+    the bottom right.  This can be done using
+    %
+    \mint{latex}|\hidelogo|
+
+    The logo can re-enabled from the next frame using
+    %
+    \mint{latex}|\showlogo|
+    %
+  \end{block}
+
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+  %
+  \frametitle{Theorem-like Environments}
+
+  The theme defines additional theorem-like environments:
+
+  \vspace{2ex}
+
+  \begin{itemize}
+    %
+    \begin{minipage}{.45\linewidth}
+      %
+      \item Conjecture
+      %
+      \item Facts
+      %
+      \item Hypothesis
+      %
+      \item Observation
+      %
+      \item Proposition
+      %
+      \item Assumption
+      %
+      \item Axiom
+      %
+    \end{minipage}
+    %
+    \begin{minipage}{.45\linewidth}
+      %
+      \item Property
+      %
+      \item Calculation
+      %
+      \item Computation
+      %
+      \item Notation
+      %
+      \item Remark
+      %
+      \item Remarks
+      %
+    \end{minipage}
+    %
+  \end{itemize}
+
+  \pagebreak
+
+  \begin{notation}[Necessary Notation]
+    %
+    \ldots
+    %
+  \end{notation}
+
+  \begin{axiom}[Arbitrary Axiom]
+    %
+    \ldots
+    %
+  \end{axiom}
+
+  \begin{property}[Peculiar Property]
+    %
+    \ldots
+    %
+  \end{property}
+
+\end{frame}
+
+\section{References}
+
+\begin{frame}
+  %
+  \frametitle{Table of contents that highlights current section}
+
+  \tableofcontents[currentsection]
+
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+  %
+  \frametitle{References}
+
+  \begin{thebibliography}{}
+
+      % Article is the default.
+      \setbeamertemplate{bibliography item}[book]
+
+      \bibitem{Hartshorne1977}
+      R.~Hartshorne.
+      \newblock \emph{Algebraic Geometry}.
+      \newblock Springer-Verlag, 1977.
+
+      \setbeamertemplate{bibliography item}[article]
+
+      \bibitem{Artin1966}
+      M.~Artin.
+      \newblock On isolated rational singularities of surfaces.
+      \newblock \emph{Amer. J. Math.}, 80(1):129--136, 1966.
+
+      \setbeamertemplate{bibliography item}[online]
+
+      \bibitem{Vakil2006}
+      R.~Vakil.
+      \newblock \emph{The moduli space of curves and Gromov--Witten theory}, 2006.
+      \newblock \url{http://arxiv.org/abs/math/0602347}
+
+      \setbeamertemplate{bibliography item}[triangle]
+
+      \bibitem{AM1969}
+      M.~Atiyah og I.~Macdonald.
+      \newblock \emph{Introduction to commutative algebra}.
+      \newblock Addison-Wesley Publishing Co., Reading, Mass.-London-Don
+      Mills, Ont., 1969
+
+      \setbeamertemplate{bibliography item}[text]
+
+      \bibitem{Fraleigh1967}
+      J.~Fraleigh.
+      \newblock \emph{A first course in abstract algebra}.
+      \newblock Addison-Wesley Publishing Co., Reading, Mass.-London-Don Mills, Ont., 1967
+
+  \end{thebibliography}
+  %
+\end{frame}
+
+\end{document}

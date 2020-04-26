@@ -1,50 +1,88 @@
-# UiB
-Beamer theme for the University of Bergen
+# beamerthemeNU
 
-## Options
+Beamer theme for Northeastern University
+
+## Installation
+
+To install the theme on a Linux system, clone (or link) this directory in
+`~/texmf/tex/latex/`;  you should then be able to use the theme from any
+location.  This is the suggested way.
+
+Alternatively, copy `beamerthemeNU.sty` and `NU-brand` into the directory of
+your beamer project.
+
+## Documentation
+
+### Options
+
 Options are given as
 ```LaTeX
-\usetheme[option]{UiB}
+\usetheme[option]{NU}
 ```
 
-### Font
-By default, almost all text is typeset in a sans serif. The option `MathSerif` enables serifs for mathematical symbols, whereas `Serif` enables serifs for all text.
+#### Vertical Alignment
 
-### Numbered environments
-By default, the environments listed below are unnumbered. The option `numbered` adds numbers, whereas `AMS` adds numbers and typesets the environment names in the style of the American Mathematical Society.
+By default, the text in each frame will be centered;  The option `t` lets the
+text start at the top of each frame.
 
-### Title frame and final frame
-Presentations automatically start with a title frame and a closing frame. Either one of them can be disabled with the options `NoTitlePage` or `NoFinalFrame`.
+#### Fonts
 
-### Language
-If one of the options
-* `american`
-* `english`
-* `UKenglish`
-* `USenglish`
-* `norsk`
-* `nynorsk`
+By default, only math text is typeset in serif;  The option `Serif` enables
+serifs for all text, whereas `SansSerif` disables serifs for all text.
 
-are given, the environments listed below are translated into the specified language.
+### Enumeration Style of Theorems
 
-## Emblem
-The emblem in the lower right corner can be removed from a specific `frame` using the macro `\nologo` like this:
+By default, the environments listed below are unnumbered. The option `numbered`
+adds numbers, whereas `AMS` adds numbers and typesets the environment names in
+the style of the American Mathematical Society.
+
+## Venue Command
+
+The `venue` command is provided, with which to describe the venue of the
+presentation, e.g. the name and location of the conference.  It should be used
+like the `author` and `institute` commands, e.g.
+
 ```LaTeX
-{
-    \nologo
-    \begin{frame}
-        ...
-    \end{frame}
-}
+\venue[Short Venue Name]{Longer Venue Name, Location}
 ```
 
-## Environments
+## Logos
+
+`NU-brand` contains NU logos taken from the
+[https://brand.northeastern.edu/guide/downloads/files/](brand page).
+
+### Title Page Logos
+
+To add other logos on the title page (e.g., a conference logo), use
+
+```LaTeX
+\addtitlepagelogo{conference-logo.png}
+```
+
+### Frame Logo
+
+The logo in the lower right corner can be removed from a specific `frame` using
+the macro `\hidelogo` before the frame and `\showlogo` after the frame, like
+this:
+
+```LaTeX
+\hidelogo
+\begin{frame}
+    ...
+\end{frame}
+\showlogo
+```
+
+### Environments
+
 An _environment_ is initialized with
+
 ```LaTeX
 \begin{environment}
     ...
 \end{environment}
 ```
+
 The following environments are predefined by `beamer`:
 * `corollary`
 * `definition`
@@ -55,7 +93,7 @@ The following environments are predefined by `beamer`:
 * `lemma`
 * `theorem`
 
-In addition, `UiB` defines these environments:
+In addition, `beamerthemeNU` defines these environments:
 * `assumption`
 * `axiom`
 * `calculation`
@@ -71,12 +109,7 @@ In addition, `UiB` defines these environments:
 * `remarks`
 
 ## Dependencies
-`UiB` imports the following packages:
-* `babel`
-* `calc`
-* `etoolbox`
-* `fontenc`
+
+`beamerthemeNU` imports the following packages:
 * `gfsneohellenic`
-* `inputenx`
 * `thmtools`
-* `tikz`
