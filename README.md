@@ -13,6 +13,8 @@ your beamer project.
 
 ## Documentation
 
+Also check out the [example document](examples/example.pdf).
+
 ### Options
 
 Options are given as
