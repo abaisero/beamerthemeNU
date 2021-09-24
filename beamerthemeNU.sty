@@ -1,9 +1,9 @@
-% Theme for Northeastern Universiry
+% Theme for Northeastern University
 % Modified by Andrea Baisero (baisero.a@northeastern.edu)
 % Based on:
 % Theme for The University of Bergen
 % Implemented by Martin Helsø (martibhe@math.uio.no)
-% Version 08-01-2020
+% Version 09-24-2021
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -57,7 +57,7 @@
 
 \AtBeginDocument{\@NU@titleframe}
 
-% TODO setup final frame
+% % TODO setup final frame
 % \AtEndDocument{\@NU@finalframe}
 
 % Use a neohellenic font from the Greek Font Society
@@ -153,6 +153,7 @@
 
 \mode<presentation>
 
+\useoutertheme[subsection=false]{miniframes}
 \useinnertheme{circles}
 \usefonttheme{\NU@font}
 
@@ -284,28 +285,27 @@
                          dp = 1ex]
                         {section in head/foot}
 
-    %
-    \hfil
+    \hspace{1em}
     %
     \usebeamerfont{author in head/foot}
     %
     \insertshortauthor
     %
-    \hfil---\hfil
+    \hfill---\hfill
     %
     \usebeamerfont{title in head/foot}
     %
-    ``\insertshorttitle''
+    \insertshorttitle
     %
-    \hfil---\hfil
+    \hfill---\hfill
     %
     \insertshortvenue
     %
-    %\hfil---\hfil
-    %%
-    %\insertframenumber\ / \inserttotalframenumber
+    \hfill
     %
-    \hfil
+    \parbox{5em}{\hfill \insertframenumber\ / \inserttotalframenumber}
+    %
+    \hspace{1em}
     %
   \end{beamercolorbox}
 

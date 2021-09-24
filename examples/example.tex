@@ -1,10 +1,9 @@
-\documentclass{beamer}
+\documentclass[9pt]{beamer}
 
 \usepackage{minted}
 
 \usetheme{NU}
-
-\title{An Example Using the NU Beamer Theme}
+\title{Example Document Using the NU Beamer Theme}
 \subtitle{Flashy Subtitle}
 
 \author[A. Baisero]{Andrea Baisero\\\texttt{baisero.a@northeastern.edu}}
@@ -111,9 +110,9 @@
   %
   \begin{itemize}
     %
-    \item The command \structure{structure}, which gives text the NU color.
+    \item With command \structure{structure}, which gives text the NU color.
     %
-    \item The command \alert{alert}, which gives text extra umph.
+    \item With command \alert{alert}, which gives text extra umph.
     %
   \end{itemize}
 
@@ -123,9 +122,9 @@
     %
   \end{block}
 
-  \begin{example}{Example}
+  \begin{example}
     %
-    This is an ``standard''  block.
+    This is an ``example''  block.
     %
   \end{example}
 
@@ -165,7 +164,7 @@
 
     \begin{itemize}
       %
-      \item Lists change colour in block environments.
+      \item Lists change color in block environments.
       %
     \end{itemize}
 
@@ -187,7 +186,7 @@
 
     \begin{itemize}
       %
-      \item Lists change colour in block environments.
+      \item Lists change color in block environments.
       %
     \end{itemize}
 
@@ -225,15 +224,15 @@
 
 \begin{frame}[fragile]
   %
-  \frametitle{Front Page}
+  \frametitle{Title Page}
 
-  \begin{block}{Front Page Logos}
+  \begin{block}{Title Page Logos}
 
-    Logos can be added to the front page using
+    Logos can be added to the title page using
     %
     \begin{minted}{latex}
-\addfrontpagelogo{logo.png}
-\addfrontpagelogo{other_logo.png}
+\addtitlepagelogo{logo.png}
+\addtitlepagelogo{other_logo.png}
     \end{minted}
 
     Calling the command multiple times will add multiple logos.
@@ -242,20 +241,21 @@
 
   \begin{block}{Hide Frame Logo}
 
-    If necessary, it is possible to free up more space by omitting the logo on
-    the bottom right.  This can be done using
-    %
+    If necessary, it is possible to free up space in individual frames by
+    omitting the logo on the bottom right.  Hiding the logo (and making it
+    reappear) is possible by using the following commands between frames:
+
     \mint{latex}|\hidelogo|
 
-    The logo can re-enabled from the next frame using
-    %
     \mint{latex}|\showlogo|
     %
   \end{block}
 
 \end{frame}
 
-\begin{frame}[allowframebreaks]
+\hidelogo
+
+\begin{frame}
   %
   \frametitle{Theorem-like Environments}
 
@@ -301,8 +301,6 @@
     %
   \end{itemize}
 
-  \pagebreak
-
   \begin{notation}[Necessary Notation]
     %
     \ldots
@@ -323,6 +321,8 @@
 
 \end{frame}
 
+\showlogo
+
 \section{References}
 
 \begin{frame}
@@ -332,6 +332,8 @@
   \tableofcontents[currentsection]
 
 \end{frame}
+
+\hidelogo
 
 \begin{frame}[allowframebreaks]
   %
