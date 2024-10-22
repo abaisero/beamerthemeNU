@@ -1,0 +1,6 @@
+@default_files = ('example');
+$pdf_mode = 1;
+$pdf_previewer = 'start evince';
+$pdflatex = 'pdflatex -shell-escape %O %S';
+
+$clean_ext = 'nav snm vrb';
